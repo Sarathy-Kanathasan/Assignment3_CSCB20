@@ -1,0 +1,195 @@
+
+
+#b63body  {
+    overflow-x: hidden;
+    cursor: url('cursor.jpg'), auto;
+    height: 100vh;
+    width: 100vw;
+    resize: both;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    margin: 0;
+}
+
+
+.title {
+    position: fixed;
+    background-position-y: fixed;
+    z-index:2;
+    background-color: #00204e;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    top:0;
+    width: 100%;
+    margin-top: -20pt;
+    padding-top: 45pt;
+    padding-bottom: 25pt;
+    margin-bottom: 0pt;
+}
+
+.maintitle {
+    display: flex;
+    justify-content: left;
+    margin-top: 0px;
+    width: 1080px;
+    left: 215px;
+    font-size:x-large;
+}
+
+.cdesc {
+    display: flex;
+    color: black;
+    overflow-x: hidden;
+}
+
+.links a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.links a:visited{
+    color:white;
+}
+
+.links a:hover {
+    
+    font-family: Arial, Helvetica, sans-serif; 
+    color: crimson;
+    text-decoration: wavy  ;
+}
+
+.links {
+    color: blue;
+    list-style-type: none;
+}
+a.links:visited {
+    color: blue;
+}
+
+a.feed {
+    color: purple;
+    line-height: 100%;
+    padding-top: 15%;
+     
+}
+
+.emblem{
+    position: absolute;
+    top: 0;
+    left: 10;
+   
+    z-index: 2;
+}
+img{
+    width: 125%;
+}
+.leftside { 
+    z-index:2;
+    line-height: 250%;
+    position: fixed;
+    list-style-type: none;
+    height: 100%;
+    width: 95pt;
+    background-color: #00204e;
+    color: rgb(255, 255, 255);
+    float: left;  
+    margin-top: -20pt;
+    margin-left: -35 ;
+    padding-top: 30pt;
+    padding-left: 50pt;
+    padding-right: 40pt;
+}
+
+.middle  {   
+    background-position-x: inherit;
+    overflow-x:hidden;
+    display:inline-block;
+    width: 100%;
+    height: 920px;
+    background-color: white;
+    position: absolute;
+    left: 210px;
+    margin-top: 80pt;
+    padding-top: 20px;
+    padding-left: 40px;  
+}
+
+.titlespace {
+    line-height: 35px;      
+}
+
+.instructor .timetable{
+    line-height: 0px;
+    font-size: 15px;
+}
+
+.lectures{
+    color: red;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+}
+
+.offhrs{
+    color: red;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+}
+
+footer{
+    background-color:rgba(97, 97, 97, 0.993);
+    color: rgb(255, 255, 255);
+    padding-bottom: 55px;
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    padding-left: 20;
+    
+
+}
+
+.xfooter{
+    display: block;
+    z-index: 2;
+    position: absolute;
+    bottom:0;
+    margin-bottom: -80px;
+    width: 100%;
+    left: 212px;
+    height:65px;
+}
+
+
+/*lectures.html exclusive code*/
+
+.lecturelinks  {   
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-position-x: inherit;
+    overflow-x:hidden;
+    display:inline-block;
+    width: 100%;
+    height: 920px;
+    background-color: white;
+    position: absolute;
+    left: 210px;
+    margin-top: 80pt;
+    
+    padding-top: 20px;
+    padding-left: 40px;  
+}
+
+.vert{
+    list-style: none;
+    border-left: 3px solid #00204e;
+    
+    padding-left:10px ;
+    height: 200px;
+
+    
+}
+
+.empty{
+    padding:  75pt;
+}
