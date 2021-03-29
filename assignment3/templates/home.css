@@ -1,0 +1,130 @@
+
+#b63body  {
+    cursor: url("cursor.jpg"), auto;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    resize: both;
+   
+}
+
+
+.title {
+    position: fixed;
+    background-color: cadetblue;
+    display: inline-flex;
+    justify-content: center;
+    width: 1080px;
+    left: 215px;
+    margin-top: -20pt;
+    margin-left: -20pt ;
+    padding-right: -50pt ;
+    padding-left: 40pt;
+    padding-top: 30pt;
+    padding-bottom: 10pt;
+}
+
+.maintitle {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+
+
+.links a:link {
+    text-decoration: none;
+}
+
+.links a:visited{
+    color: blue;
+}
+
+.links a:hover {
+    font-family: Arial, Helvetica, sans-serif; 
+    color: crimson;
+    text-decoration: wavy  ;
+    
+}
+
+
+.links {
+    list-style-type: none;
+}
+
+
+a.links{ /*zoom link styling starts here*/
+    text-decoration: none;
+}
+
+a.links:visited {
+    color: blue;
+}
+
+.afeed {
+    line-height: 100%;
+    padding-top: 15%;
+    
+}
+
+
+
+.leftside { 
+    line-height: 250%;
+    position:fixed;
+    list-style-type: none;
+    height: 100%;
+    width: 95pt;
+    background-color:cadetblue;
+    color: white;
+    float: left;
+    margin-top: -20pt;
+    margin-left: -20pt ;
+
+    padding-top: 100pt;
+    padding-left: 20pt;
+    padding-right: 40pt;
+}
+.middle  {
+    
+    float: right;
+    background-color: white;
+    width: 94%;
+    margin-top: 0%;
+    padding: 2%;
+}
+
+.cdesc {
+    float: inherit;
+    justify-content: center;
+    color: black;
+}
+
+
+
+.titlespace {
+    line-height: 35px;      
+}
+
+.instructor .timetable{
+    line-height: 0px
+}
+
+.lectures{
+    color: red;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+}
+
+.offhrs{
+    color: red;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    
+
+}
+
+
+
