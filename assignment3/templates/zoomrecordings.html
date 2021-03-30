@@ -25,34 +25,52 @@
           
           <br>
            
-                <ul class = 'links' >
-                  <h3>
-                  <li ><a href = index.html > Home </a></li>
-    
-                  <li ><a  href = lectures.html > Lectures </a></li>
-    
-                  <li ><a  href = zoomrecordings.html > Recordings </a></li>
-    
-                  <li ><a href = "https://piazza.com/account/login" target="blank"> Piazza </a></li>
-    
-                  <li ><a href = "https://markus.utsc.utoronto.ca/cscb63w21" target="blank">Markus </a> </li>
-    
-                  <li > <a href = Assignments.html>Assignments </a></li>
-    
-                  <li > <a href = "pdf files\syllabus.pdf" target="blank">Syllabus </a></li>
-    
-                  <li > <a href = Labs.html> Labs </a></li>
-    
-                  <li > <a href = Calendar.html>Calendar </a></li>
-    
-                  <li ><a href = links.html > Links </a></li>
-        
-                  <li class = 'afeed'> <a href = courseteam.html>Course Team </a></li>
-    
-                  <li class = 'afeed'> <a href = AnonymousFeedback.html>Anonymous Feedback </a></li>
-                  
-                  </h3>
-                </ul>            
+          <ul class = 'links' >
+            <h3>
+
+              <li ><form method = "post" ></form></li>
+
+              <!-- have better idea will delete this -->
+              {% if status == 1 %}
+                <li ><a href = marks.html > Tmarks </a></li>
+
+                <li ><a href = feedback.html > Tfeedback </a></li>
+              {% elif status == 0 %}
+                <li ><a href = marks.html > Smarks</a></li>
+
+                <li ><a href = feedback.html > Sfeedback</a></li>
+              {% endif %}
+                
+            <li ><a href = /index > Home </a></li>
+
+            <li ><a  href = /lectures > Lectures </a></li>
+
+            <li ><a  href = /zoomrecordings > Recordings </a></li>
+
+            <li ><a href = "https://piazza.com/account/login" target="blank"> Piazza </a></li>
+
+            <li ><a href = "https://markus.utsc.utoronto.ca/cscb63w21" target="blank">Markus </a> </li>
+
+            <li > <a href = /Assignments>Assignments </a></li>
+
+            <li > <a href = "pdf files\syllabus.pdf" target="blank">Syllabus </a></li>
+
+            <li > <a href = "https://www.cp24.com/?cache=yes%3FclipId%3D68597%2F7.337842" target="blank">News </a></li>
+
+            <li > <a href = /Labs> Labs </a></li>
+
+            <li > <a href = /Calendar>Calendar </a></li>
+
+            <li ><a href = /links > Links </a></li>
+
+            
+
+            <li class = a feed> <a href = /courseteam>Course Team </a></li>
+
+            <li class = a feed> <a href = /AnonymousFeedback>Anonymous Feedback </a></li>
+            
+            </h3>
+          </ul>                   
         </div> <!--end of the left side box-->
     
     

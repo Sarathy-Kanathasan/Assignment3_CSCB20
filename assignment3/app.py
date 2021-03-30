@@ -78,7 +78,41 @@ def login():
 	else:
 		return render_template('login.html')
 
-		
+@app.route('/index')		
+def index():
+	return ('index.html')
+
+@app.route('/lectures')		
+def lectures():
+	return ('lectures.html')
+
+@app.route('/zoomrecordings')		
+def zoomrecordings():
+	return ('zoomrecordings.html')
+
+@app.route('/Assignments')		
+def Assignments():
+	return ('Assignments.html')
+
+@app.route('/Labs')		
+def Labs():
+	return ('Labs.html')
+
+@app.route('/Calendar')		
+def Calendar():
+	return ('Calendar.html')
+
+@app.route('/links')		
+def links():
+	return ('links.html')
+
+@app.route('/courseteam')		
+def courseteam():
+	return ('courseteam.html')
+
+@app.route('/AnonymousFeedback')		
+def AnonymousFeedback():
+	return ('anonymousfeedback.html')
 
 
 
