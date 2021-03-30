@@ -1,0 +1,49 @@
+.container{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: rgb(87, 69, 0);
+    
+}
+
+.loginbox{
+    text-align: center;
+    border: 2px solid rgb(0, 1, 82);
+    background-color: white;
+}
+
+.buttom{
+    text-align: center;
+}
+
+.topbox{
+    background-color: rgb(255, 0, 0);
+    color:cornsilk;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin-top: 0;
+
+}
+
+img{
+    width: 50%;
+
+}
+
+.bg{
+    background-image: url("bckround.png");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -5px;
+    margin-bottom: 0;
+    margin-left: -5px;
+    margin-right: -5px;
+    padding: 0%;
+}
