@@ -47,10 +47,9 @@ def close_connection(exception):
 def index():
 	#return render_template('login.html', error=error)
 	if 'username' in session:
-		# return render_template('Calendar.html')
-		return 'Logged in as %s <a href="/logout">Logout</a>' % escape(session['username'])
+		return render_template('index.html', status = session['status'])
 	elif 'username' not in session:
-		return redirect(url_for('login'))
+		return redirect('login.html')
 	
 	
 
@@ -70,6 +69,7 @@ def login():
 			if result[1]==request.form['username']:
 				if result[2]==request.form['password']:
 					session['username']=request.form['username']
+					session['status']=result[3]
 					return redirect(url_for('index'))
 		return "Incorrect UserName/Password"
 	
@@ -85,6 +85,7 @@ def login():
 @app.route('/logout')
 def logout():
 	session.pop('username', None)
+	session.pop('status', None)
 	return redirect(url_for('login'))
 
 if __name__=="__main__":
