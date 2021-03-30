@@ -120,6 +120,11 @@ def logout():
 	session.pop('status', None)
 	return redirect(url_for('login'))
 
+@app.route('/create_acc')
+def create_acc():
+	return "need to make create user page"
+
+
 if __name__=="__main__":
 	app.run(debug=True,host='0.0.0.0')
 
