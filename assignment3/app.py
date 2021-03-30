@@ -49,12 +49,7 @@ def index():
 	if 'username' in session:
 		return render_template('index.html', status = session['status'])
 	elif 'username' not in session:
-		return redirect('login.html')
-	
-	
-
-
-
+		return redirect(url_for('login'))
 
 
 @app.route('/login',methods=['GET','POST'])
@@ -78,41 +73,44 @@ def login():
 	else:
 		return render_template('login.html')
 
+
+
+
 @app.route('/index')		
-def index():
-	return ('index.html')
+def home():
+	return render_template('index.html')
 
 @app.route('/lectures')		
 def lectures():
-	return ('lectures.html')
+	return render_template('lectures.html')
 
 @app.route('/zoomrecordings')		
 def zoomrecordings():
-	return ('zoomrecordings.html')
+	return render_template('zoomrecordings.html')
 
 @app.route('/Assignments')		
 def Assignments():
-	return ('Assignments.html')
+	return render_template('Assignments.html')
 
 @app.route('/Labs')		
 def Labs():
-	return ('Labs.html')
+	return render_template('Labs.html')
 
 @app.route('/Calendar')		
 def Calendar():
-	return ('Calendar.html')
+	return render_template('Calendar.html')
 
 @app.route('/links')		
 def links():
-	return ('links.html')
+	return render_template('links.html')
 
 @app.route('/courseteam')		
 def courseteam():
-	return ('courseteam.html')
+	return render_template('courseteam.html')
 
 @app.route('/AnonymousFeedback')		
 def AnonymousFeedback():
-	return ('anonymousfeedback.html')
+	return render_template('anonymousfeedback.html')
 
 
 
