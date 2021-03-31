@@ -115,6 +115,12 @@ def AnonymousFeedback():
 	elif session['status'] == 1:
 		return render_template('anonymousfeedbackinstructor.html')
 
+@app.route('/Marks')
+def Marks():
+	if session['status'] == 0:
+		return render_template('marksstudent.html')
+	elif session['status'] == 1:
+		return render_template('marksinstructor.html')
 
 
 @app.route('/logout')
