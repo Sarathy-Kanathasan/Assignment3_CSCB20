@@ -110,7 +110,10 @@ def courseteam():
 
 @app.route('/AnonymousFeedback')		
 def AnonymousFeedback():
-	return render_template('anonymousfeedback.html')
+	if session['status'] == 0:
+		return render_template('anonymousfeedbackstudent.html')
+	elif session['status'] == 1:
+		return render_template('anonymousfeedbackinstructor.html')
 
 
 
