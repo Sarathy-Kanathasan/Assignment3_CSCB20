@@ -68,6 +68,10 @@ a.links:visited {
     color: blue;
 }
 
+.links a.active {
+    color:yellow;
+}
+
 a.feed {
     color: purple;
     line-height: 100%;
