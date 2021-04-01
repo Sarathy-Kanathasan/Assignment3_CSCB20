@@ -131,7 +131,7 @@ def logout():
 
 @app.route('/create_acc')
 def create_acc():
-	return "need to make create user page"
+	return render_template('create_acc.html')
 
 
 if __name__=="__main__":
