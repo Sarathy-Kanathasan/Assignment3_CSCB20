@@ -16,7 +16,7 @@ INSERT INTO users VALUES(4, 'instructor2', 'instructor2',1);
 CREATE TABLE IF NOT EXISTS marks (
     id INTERGER NOT NULL,
     name VARCHAR(20) NOT NULL,
-    mark INTERGER CHECK(Mark>0) NOT NULL
+    mark INTERGER CHECK(mark>0) NOT NULL
 );
 
 

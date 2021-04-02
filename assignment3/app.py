@@ -114,12 +114,48 @@ def links():
 def courseteam():
 	return render_template('courseteam.html')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/Marks')
 def Marks():
 	if session['status'] == 0:
 		return render_template('marksstudent.html')
 	elif session['status'] == 1:
-		return render_template('marksinstructor.html')
+		sql = """
+			SELECT * [except name] 
+			FROM marks
+			"""
+		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 
+		return render_template('marksinstructor.html', viewmarks=viewmarks) #returns the tmeplate aswell as the marks that should be viewed
 
 @app.route('/AnonymousFeedback', methods=['GET', 'POST'])		
 def AnonymousFeedback():
@@ -143,6 +179,19 @@ def AnonymousFeedback():
 			"""
 		anonfeedback = query_db(sql, args=(),one=False)
 		return render_template('anonymousfeedbackinstructor.html', anonfeedback=anonfeedback)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route('/logout')
