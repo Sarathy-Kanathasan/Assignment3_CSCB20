@@ -16,11 +16,24 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE)
     return db
 
+
+
+
+
+
+
+
+
+
+
+
 # converts the tuples from get_db() into dictionaries
 # (don't worry if you don't understand this code)
 def make_dicts(cursor, row):
     return dict((cursor.description[idx][0], value)
                 for idx, value in enumerate(row))
+
+
 
 # given a query, executes and returns the result
 # (don't worry if you don't understand this code)
@@ -75,7 +88,6 @@ def login():
 
 
 
-
 @app.route('/index')		
 def home():
 	return render_template('index.html')
@@ -108,12 +120,7 @@ def links():
 def courseteam():
 	return render_template('courseteam.html')
 
-@app.route('/AnonymousFeedback')		
-def AnonymousFeedback():
-	if session['status'] == 0:
-		return render_template('anonymousfeedbackstudent.html')
-	elif session['status'] == 1:
-		return render_template('anonymousfeedbackinstructor.html')
+
 
 @app.route('/Marks')
 def Marks():
@@ -121,6 +128,19 @@ def Marks():
 		return render_template('marksstudent.html')
 	elif session['status'] == 1:
 		return render_template('marksinstructor.html')
+
+@app.route('/AnonymousFeedback')		
+def AnonymousFeedback():
+	
+	if session['status'] == 0:
+		return render_template('anonymousfeedbackstudent.html')
+	elif session['status'] == 1:
+		#for afeed in query_db('select * from afeed'):
+			#return afeed['feedback']
+		
+			
+			
+		return render_template('anonymousfeedbackinstructor.html')
 
 
 @app.route('/logout')
