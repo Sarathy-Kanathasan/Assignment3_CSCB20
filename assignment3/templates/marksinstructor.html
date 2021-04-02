@@ -75,17 +75,13 @@
             <!-- task 1: create a title for the todo list using the <h1></h1> tag -->
             <div >
                 <!-- task 2: create a label for the form using the <label></label> tag -->
-                <label> Student Marks:
+                <label> <b>Student Marks:</b>
                   
-                  {% for m in viewmarks %}
-                  <ul><li>{{ m[0] }}</li></ul>
+                  {% for m, n, p in viewmarks %}
+                  <ul><li>{{ m,n,p }}</li></ul>
                   {% endfor %}
                  
                 </label>
-                
-                <!-- task 3: create the form using the <form></form> tag;
-                     remember to set routing here -->
-                <!--displays the data from the anon feed back db-->
 
             </div>
         </body>
