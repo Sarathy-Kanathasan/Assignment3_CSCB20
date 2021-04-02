@@ -15,16 +15,7 @@ def get_db():
         # otherwise, create a database to use
         db = g._database = sqlite3.connect(DATABASE)
     return db
-
-
-
-
-
-
-
-
-
-
+	
 
 
 # converts the tuples from get_db() into dictionaries
@@ -33,8 +24,6 @@ def make_dicts(cursor, row):
     return dict((cursor.description[idx][0], value)
                 for idx, value in enumerate(row))
 
-
-
 # given a query, executes and returns the result
 # (don't worry if you don't understand this code)
 def query_db(query, args=(), one=False):
@@ -42,6 +31,13 @@ def query_db(query, args=(), one=False):
     rv = cur.fetchall()
     cur.close()
     return (rv[0] if rv else None) if one else rv
+
+def insert_db(sqlcode, newvalues):
+	cur=get_db()
+	cur.execute(sqlcode, newvalues)
+	cur.commit()
+	cur.close()
+	return
 
 # tells Flask that "this" is the current running app
 app = Flask(__name__)
@@ -86,8 +82,6 @@ def login():
 	else:
 		return render_template('login.html')
 
-
-
 @app.route('/index')		
 def home():
 	return render_template('index.html')
@@ -120,8 +114,6 @@ def links():
 def courseteam():
 	return render_template('courseteam.html')
 
-
-
 @app.route('/Marks')
 def Marks():
 	if session['status'] == 0:
@@ -129,18 +121,28 @@ def Marks():
 	elif session['status'] == 1:
 		return render_template('marksinstructor.html')
 
-@app.route('/AnonymousFeedback')		
+@app.route('/AnonymousFeedback', methods=['GET', 'POST'])		
 def AnonymousFeedback():
 	
 	if session['status'] == 0:
-		return render_template('anonymousfeedbackstudent.html')
+		if request.method=="POST":
+			newfeed = request.form['feed'] #store the new value that they enter in to the variable newfeed
+			sql = """
+				INSERT INTO afeed(feedback) VALUES (?)
+				"""
+			feedlist = [] #create empty list to add the form inputs
+			feedlist.append(newfeed) # appends value of the variable new feed into the feedlist
+			insert_db(sql, feedlist)
+
+			return render_template("anonymousfeedbackstudent.html")
+		return render_template("anonymousfeedbackstudent.html")
 	elif session['status'] == 1:
-		#for afeed in query_db('select * from afeed'):
-			#return afeed['feedback']
-		
-			
-			
-		return render_template('anonymousfeedbackinstructor.html')
+		sql="""
+			SELECT *
+			FROM afeed
+			"""
+		anonfeedback = query_db(sql, args=(),one=False)
+		return render_template('anonymousfeedbackinstructor.html', anonfeedback=anonfeedback)
 
 
 @app.route('/logout')

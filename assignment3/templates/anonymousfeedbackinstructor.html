@@ -65,8 +65,11 @@
                 <div >
                     <!-- task 2: create a label for the form using the <label></label> tag -->
                     <label> Feedback from the course:
-                      { %for afeed in query_db('select * from afeed'):
-                      return afeed['feedback']% }
+                      
+                      {% for a in anonfeedback %}
+                      <ul><li>{{ a[0] }}</li></ul>
+                      {% endfor %}
+                     
                     </label>
                     
                     <!-- task 3: create the form using the <form></form> tag;
