@@ -199,10 +199,42 @@ def logout():
 	session.pop('username', None)
 	session.pop('status', None)
 	return redirect(url_for('login'))
+i = 10
+@app.route('/create_acc', methods = ['GET', 'POST'])
 
-@app.route('/create_acc')
+
+
+
 def create_acc():
+	if request.method=="POST":
+		fname = request.form['fname'] #store the new value that they enter in to the variable newfeed
+		lname = request.form['fname']
+		uname = request.form['username']
+		passw = request.form['password']
+		types = request.form['type']
+		check_types = ""
+		check_types = str(types)
+		id = 12
+		#i =id+1
+		print(check_types)
+		if fname == "" or lname == "" or passw == "" or check_types == "" :
+			print(types)
+			return redirect(url_for('login')) #will temprarily redirect you to login page if none type
+				#need to erditect too an error message
+			
+			# ad sql  queries
+
+		sql = """
+			INSERT INTO users(id, username, password, type ) VALUES (?,?,?,?)
+			"""
+		newfeed = (id,uname,passw,types) #store the new value that they enter in to the variable newfeed
+
+
+		# feedlist = [] #create empty list to add the form inputs
+		# feedlist.append(newfeed) # appends value of the variable new feed into the feedlist
+		insert_db(sql, newfeed)
 	return render_template('create_acc.html')
+
 
 
 if __name__=="__main__":
