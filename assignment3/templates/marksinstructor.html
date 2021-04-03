@@ -82,7 +82,20 @@
                   {% endfor %}
                  
                 </label>
-
+                <br>
+                <br>
+                <label> <b>Input New Student Mark:</b>
+                    <form method = "post" action="/marksinstructor">
+                        <label for="id">Student ID:</label>
+                        <textarea id="id" name="id" cols="10" rows="1"></textarea>
+                        <pre>  </pre>
+                        <label for="name">Student Name:</label>
+                        <textarea id="name" name="name" cols="10" rows="1"></textarea>
+                        <pre>  </pre>
+                        <label for="grade">Grade:</label>
+                        <textarea id="grade" name="grade" cols="3" rows="1"></textarea>
+                        <input type="button" name="grade-submit" value="submit">
+                </label>
             </div>
         </body>
     
