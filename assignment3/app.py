@@ -150,11 +150,12 @@ def AnonymousFeedback():
 		return render_template("anonymousfeedbackstudent.html")
 	elif session['status'] == 1:
 		sql="""
-			SELECT *
+			SELECT feedback, ainfo
 			FROM afeed
+			WHERE instructor = ?
 			"""
-		anonfeedback = query_db(sql, args=(),one=False)
-		return render_template('anonymousfeedbackinstructor.html', anonfeedback=anonfeedback)
+		feedback = query_db(sql, [session['username']],one=False)
+		return render_template('anonymousfeedbackinstructor.html', anonfeedback=feedback['feedback'], ainfo=feedback['ainfo'])
 
 @app.route('/logout')
 def logout():
