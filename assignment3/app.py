@@ -74,6 +74,7 @@ def login():
 				if result[2]==request.form['password']:
 					session['username']=request.form['username']
 					session['status']=result[3]
+					session['id'] = result[0]
 
 					welcome_name = result[1]
 					print(welcome_name)
@@ -117,10 +118,19 @@ def links():
 def courseteam():
 	return render_template('courseteam.html')
 
+
 @app.route('/Marks', methods=['GET', 'POST'])
 def Marks():
 	if session['status'] == 0:
-		return render_template('marksstudent.html')
+		sql = """
+			SELECT name, mark, assignment
+			FROM marks
+			WHERE id = ?
+			"""
+		viewmarks = query_db(sql, [session['id']], one = False )
+		#return render_template('marksstudent.html')
+		return render_template("marksstudent.html", viewmarks=viewmarks, uname  = session['username'])
+
 	elif session['status'] == 1:
 		sql = """
 			SELECT *
