@@ -29,9 +29,7 @@
        
             <ul class = 'links' >
               <h3>
-
-              
-               
+             
               <li ><a href = /index class="active" > Home </a></li>
 
               <li ><a  href = /lectures > Lectures </a></li>
@@ -78,7 +76,7 @@
                 <label> <b>Student Marks:</b>
                   
                   {% for m, n, p in viewmarks %}
-                  <ul><li>{{ m,n,p }}</li></ul>
+                  <ul><div class ="vert">{{ m[0],n[0],p[0] }}</div><hr></ul>
                   {% endfor %}
                  
                 </label>

@@ -76,6 +76,7 @@ def login():
 					session['status']=result[3]
 
 					welcome_name = result[1]
+					print(welcome_name)
 					return render_template('index.html',welcome_name = welcome_name)					
 		return "Incorrect UserName/Password"
 	
