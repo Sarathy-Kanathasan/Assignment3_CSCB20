@@ -138,14 +138,11 @@ def Marks():
 			"""
 		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 
 		if request.method=="POST":
-			feedlist = [] #create empty list to add form input
-			feedlist.append(request.form['id'])
-			feedlist.append(request.form['name'])
-			feedlist.append(request.form['grade'])
+			feedlist = (int(request.form['id']), request.form['name'], int(request.form['mark']))
 			sql = """
-				INSERT INTO marks(id, name, mark) VALUES (?)
+				INSERT INTO marks(id, name, mark) VALUES (?, ?, ?)
 				"""
-			insert_db(sql, feedlist)
+			insert_db(sql, feedlist) #need error if id, name, or grade missing
 			return render_template("marksinstructor.html", viewmarks=viewmarks)
 		return render_template('marksinstructor.html', viewmarks=viewmarks) #returns the tmeplate aswell as the marks that should be viewed
 
@@ -165,12 +162,9 @@ def AnonymousFeedback():
 			newfeed = newfeed + " " + request.form['q3']
 			newfeed = newfeed + " " + request.form['q4']
 			sql = """
-				INSERT INTO afeed(feedback, ainfo, instructor) VALUES (?)
+				INSERT INTO afeed(feedback, ainfo, instructor) VALUES (?, ?, ?)
 				"""
-			feedlist = [] #create empty list to add the form inputs
-			feedlist.append(newfeed) # appends value of the variable new feed into the feedlist
-			feedlist.append(request.form['addi'])
-			feedlist.append(request.form['instructor'])
+			feedlist = (newfeed, request.form['addi'], request.form['instructor'])
 			insert_db(sql, feedlist)
 
 			return render_template("anonymousfeedbackstudent.html", instructors=instructors)
