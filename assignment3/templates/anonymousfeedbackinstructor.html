@@ -68,8 +68,9 @@
                     <!-- task 2: create a label for the form using the <label></label> tag -->
                     <label> Feedback from the course:
                       
-                      {% for a in anonfeedback %}
-                      <ul><li>{{ a[0] }}</li></ul>
+                      {% for a in range(anonfeedback|length) %}
+                      <ul><li>{{ anonfeedback[a] }}</li>
+                      <p>Additional comments:<br>{{ ainfo[a] }}</p></ul>
                       {% endfor %}
                      
                     </label>
