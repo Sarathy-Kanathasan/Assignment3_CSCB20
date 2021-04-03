@@ -86,6 +86,10 @@ a.feed {
      
 }
 
+.links a.log{
+    color: rgb(255, 0, 0); 
+}
+
 .emblem{
     position: absolute;
     top: 0;
