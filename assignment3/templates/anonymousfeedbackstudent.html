@@ -93,8 +93,9 @@
                         <br>
                         <label for="instructor">Select your instructor:</label>
                         <select name="instructor" id = "instructor">
-                          <option value="Joe">Joe</option>
-                          <option value="Jim">Jim</option>
+                          {% for a in instructors %}
+                            <option value=a>{{ a }}</option>
+                          {% endfor %}
                         </select>
                         <br>
                         <br>
