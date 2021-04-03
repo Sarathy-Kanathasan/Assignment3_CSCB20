@@ -162,7 +162,7 @@ def AnonymousFeedback():
 			feedlist.append(request.form['instructor'])
 			insert_db(sql, feedlist)
 
-			return render_template("anonymousfeedbackstudent.html")
+			return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 		return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 	elif session['status'] == 1:
 		sql="""
