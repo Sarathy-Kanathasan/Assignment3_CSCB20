@@ -142,6 +142,12 @@ def Marks():
 def AnonymousFeedback():
 	
 	if session['status'] == 0:
+		sql = """
+			SELECT username
+			FROM users
+			WHERE type = 1
+			""" #select all teacher names
+		instructors = query_db(sql, args=(), one=False)
 		if request.method=="POST":
 			newfeed = request.form['q1'] #store answer to each question in newfeed.
 			newfeed = newfeed + " " + request.form['q2']
@@ -157,7 +163,7 @@ def AnonymousFeedback():
 			insert_db(sql, feedlist)
 
 			return render_template("anonymousfeedbackstudent.html")
-		return render_template("anonymousfeedbackstudent.html")
+		return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 	elif session['status'] == 1:
 		sql="""
 			SELECT feedback, ainfo
