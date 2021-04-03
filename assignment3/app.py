@@ -138,10 +138,11 @@ def AnonymousFeedback():
 			newfeed += request.form['q3']
 			newfeed += request.form['q4']
 			sql = """
-				INSERT INTO afeed(feedback, instructor) VALUES (?)
+				INSERT INTO afeed(feedback, ainfo, instructor) VALUES (?)
 				"""
 			feedlist = [] #create empty list to add the form inputs
 			feedlist.append(newfeed) # appends value of the variable new feed into the feedlist
+			feedlist.append(request.form['addi'])
 			feedlist.append(request.form['instructor'])
 			insert_db(sql, feedlist)
 
