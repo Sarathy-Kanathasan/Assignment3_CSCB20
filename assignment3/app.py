@@ -74,7 +74,9 @@ def login():
 				if result[2]==request.form['password']:
 					session['username']=request.form['username']
 					session['status']=result[3]
-					return redirect(url_for('index'))
+
+					welcome_name = result[1]
+					return render_template('index.html',welcome_name = welcome_name)					
 		return "Incorrect UserName/Password"
 	
 	elif 'username' in session:
