@@ -133,12 +133,16 @@ def AnonymousFeedback():
 	
 	if session['status'] == 0:
 		if request.method=="POST":
-			newfeed = request.form['feed'] #store the new value that they enter in to the variable newfeed
+			newfeed = request.form['q1'] #store the new value that they enter in to the variable newfeed
+			newfeed += request.form['q2']
+			newfeed += request.form['q3']
+			newfeed += request.form['q4']
 			sql = """
-				INSERT INTO afeed(feedback) VALUES (?)
+				INSERT INTO afeed(feedback, instructor) VALUES (?)
 				"""
 			feedlist = [] #create empty list to add the form inputs
 			feedlist.append(newfeed) # appends value of the variable new feed into the feedlist
+			feedlist.append(request.form['instructor'])
 			insert_db(sql, feedlist)
 
 			return render_template("anonymousfeedbackstudent.html")
