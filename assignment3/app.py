@@ -138,9 +138,9 @@ def Marks():
 			"""
 		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 
 		if request.method=="POST":
-			feedlist = (int(request.form['id']), request.form['name'], int(request.form['mark']))
+			feedlist = (int(request.form['id']), request.form['name'], int(request.form['mark']), request.form['assignment'])
 			sql = """
-				INSERT INTO marks(id, name, mark) VALUES (?, ?, ?)
+				INSERT INTO marks(id, name, mark) VALUES (?, ?, ?, ?)
 				"""
 			insert_db(sql, feedlist) #need error if id, name, or grade missing
 			return render_template("marksinstructor.html", viewmarks=viewmarks)
