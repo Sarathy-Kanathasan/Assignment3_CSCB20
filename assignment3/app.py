@@ -116,7 +116,7 @@ def links():
 def courseteam():
 	return render_template('courseteam.html')
 
-@app.route('/Marks')
+@app.route('/Marks', methods=['GET', 'POST'])
 def Marks():
 	if session['status'] == 0:
 		return render_template('marksstudent.html')
@@ -125,7 +125,17 @@ def Marks():
 			SELECT *
 			FROM marks
 			"""
-		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 		
+		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 
+		if request.method=="POST":
+			feedlist = [] #create empty list to add form input
+			feedlist.append(request.form['id'])
+			feedlist.append(request.form['name'])
+			feedlist.append(request.form['grade'])
+			sql = """
+				INSERT INTO marks(id, name, mark) VALUES (?)
+				"""
+			insert_db(sql, feedlist)
+			return render_template("marksinstructor.html", viewmarks=viewmarks)
 		return render_template('marksinstructor.html', viewmarks=viewmarks) #returns the tmeplate aswell as the marks that should be viewed
 
 @app.route('/AnonymousFeedback', methods=['GET', 'POST'])		
@@ -133,10 +143,10 @@ def AnonymousFeedback():
 	
 	if session['status'] == 0:
 		if request.method=="POST":
-			newfeed = request.form['q1'] #store the new value that they enter in to the variable newfeed
-			newfeed += request.form['q2']
-			newfeed += request.form['q3']
-			newfeed += request.form['q4']
+			newfeed = request.form['q1'] #store answer to each question in newfeed.
+			newfeed = newfeed + " " + request.form['q2']
+			newfeed = newfeed + " " + request.form['q3']
+			newfeed = newfeed + " " + request.form['q4']
 			sql = """
 				INSERT INTO afeed(feedback, ainfo, instructor) VALUES (?)
 				"""
