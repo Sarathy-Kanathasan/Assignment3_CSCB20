@@ -25,7 +25,8 @@ INSERT INTO marks VALUES(1, 'Student1', '100');
 
 CREATE TABLE IF NOT EXISTS afeed (
     feedback VARCHAR(1000) NOT NULL
+    ainfo VARCHAR(1000)
     instructor VARCHAR(30) NOT NULL
 );
 
-INSERT INTO afeed VALUES ("SUCK UR MUM PUSSY HOLE I HATE THIS CLASS", "Instructor1");
+INSERT INTO afeed VALUES ("SUCK UR MUM PUSSY HOLE I HATE THIS CLASS", "none", "Instructor1");
