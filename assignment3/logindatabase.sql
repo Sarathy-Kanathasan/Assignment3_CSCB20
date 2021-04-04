@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS afeed (
     instructor VARCHAR(30) NOT NULL
 );
 
-INSERT INTO afeed VALUES ("SUCK UR MUM PUSSY HOLE I HATE THIS CLASS", "2", "3", "4", 'IM UNDER THE WATER', "Instructor1");
+INSERT INTO afeed VALUES ("i love the prof", "nothing i love the prof", "nothing i love the prof", "nothing ", 'IM UNDER THE WATER', "Instructor1");
 
 CREATE TABLE IF NOT EXISTS remark (
     id INTEGER NOT NULL,

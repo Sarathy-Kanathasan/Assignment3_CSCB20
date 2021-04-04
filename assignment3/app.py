@@ -118,6 +118,17 @@ def links():
 def courseteam():
 	return render_template('courseteam.html')
 
+@app.route('/remark', methods=['GET', 'POST'])
+def remark():
+	if session['status'] == 1:
+		sql12 = """
+			SELECT *
+			FROM remark
+			"""
+		remarkreq = query_db(sql12,args=(),one=False)
+	return render_template('instructorremarkview.html', remarkreq=remarkreq )
+
+
 
 @app.route('/Marks', methods=['GET', 'POST'])
 def Marks():
@@ -152,7 +163,7 @@ def Marks():
 			SELECT *
 			FROM marks
 			"""
-		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 
+		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 		
 		if request.method=="POST":
 			id = int(request.form['id'])
 			name = request.form['name']

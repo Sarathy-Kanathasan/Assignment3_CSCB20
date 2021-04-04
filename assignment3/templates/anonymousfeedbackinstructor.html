@@ -38,6 +38,8 @@
 
         <li ><a href = /Marks> Marks </a></li>
 
+        <li><a href = /remark> Remark Requests </a></li>
+
         <li > <a href = "static\syllabus.pdf" target="blank">Syllabus </a></li>
 
         <li > <a href = "https://www.cp24.com/?cache=yes%3FclipId%3D68597%2F7.337842" target="blank">News </a></li>
@@ -66,15 +68,15 @@
                 <!-- task 1: create a title for the todo list using the <h1></h1> tag -->
                 <div >
                     <!-- task 2: create a label for the form using the <label></label> tag -->
-                    <label> Feedback from the course:
+                    <label> Feedback from the course:<hr>
                       
                       {% for a in feedback %}
                       
-                      <ul><li>Q1: {{ a[0] }}</li>
-                          <li>Q2: {{ a[1] }}</li>
-                          <li>Q3: {{ a[2] }}</li>
-                          <li>Q4: {{ a[3] }}</li>
-                      <p>Additional comments:<br>{{ a[4] }}</p></ul>
+                      <ul class = vert><li>Q1: What do you like about the instructor? {{ a[0] }}</li>
+                          <li>Q2: What do you recommend the instructor to do to improve their teaching? {{ a[1] }}</li>
+                          <li>Q3: What do you like about the labs? {{ a[2] }}</li>
+                          <li>Q4: What do you recommend the lab instructors to do to improve their lab teaching? {{ a[3] }}</li>
+                      <p>Additional comments:<br>{{ a[4] }}</p></ul><hr>
                       <br>
                         
                       {% endfor %}
