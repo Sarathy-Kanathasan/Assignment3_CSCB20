@@ -68,15 +68,18 @@
                     <!-- task 2: create a label for the form using the <label></label> tag -->
                     <label> Feedback from the course:
                       
-                      {% for a in range(anonfeedback|length) %}
-                      <ul><li>{{ anonfeedback[a] }}</li>
-                      <p>Additional comments:<br>{{ ainfo[a] }}</p></ul>
+                      {% for a in feedback %}
+                      
+                      <ul><li>Q1: {{ feedback[0] }}</li>
+                          <li>Q2: {{ feedback[1] }}</li>
+                          <li>Q3: {{ feedback[2] }}</li>
+                          <li>Q4: {{ feedback[3] }}</li>
+                      <p>Additional comments:<br>{{ a[4] }}</p></ul>
+                      <br>
+                        
                       {% endfor %}
                      
                     </label>
-                    
-                    <!-- task 3: create the form using the <form></form> tag;
-                         remember to set routing here -->
                     <!--displays the data from the anon feed back db-->
 
                 </div>
