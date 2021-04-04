@@ -171,12 +171,16 @@ def AnonymousFeedback():
 		instructors = query_db(sql, args=(), one=False)
 		if request.method=="POST":
 			sql = """
-				INSERT INTO afeed(q1, q2, q3, q4, ainfo, instructor) VALUES (?, ?, ?, ?, ?, ?)
+				INSERT INTO afeed(q1, q2, q3, q4, ainfo, instructor) VALUES (?,?,?,?,?,?)
 				"""
-			feedlist = (request.form['q1'], request.form['q2'], request.form['q3'], request.form['q4'], request.form['addi'], request.form['instructor'])
+			q1 = request.form['q1']
+			q2 = request.form['q2']
+			q3 = request.form['q3']
+			q4 = request.form['q4']
+			ainfo = request.form['addi']
+			instructor = request.form['instructor']
+			feedlist = (q1, q2, q3, q4, ainfo, instructor)
 			insert_db(sql, feedlist)
-
-			return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 		return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 	elif session['status'] == 1:
 		sql="""
@@ -184,7 +188,7 @@ def AnonymousFeedback():
 			FROM afeed
 			WHERE instructor = ?
 			"""
-		feedback = query_db(sql, [session['username']],one=False)
+		feedback = query_db(sql, [str(session['username'])],one=False)
 		return render_template('anonymousfeedbackinstructor.html', feedback=feedback)
 
 @app.route('/logout')
