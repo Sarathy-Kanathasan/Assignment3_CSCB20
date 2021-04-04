@@ -170,7 +170,7 @@ def AnonymousFeedback():
 			""" #select all teacher names
 		instructors = query_db(sql, args=(), one=False)
 		if request.method=="POST":
-			sql = """
+			sql1 = """
 				INSERT INTO afeed(q1, q2, q3, q4, ainfo, instructor) VALUES (?,?,?,?,?,?)
 				"""
 			q1 = request.form['q1']
@@ -180,7 +180,7 @@ def AnonymousFeedback():
 			ainfo = request.form['addi']
 			instructor = request.form['instructor']
 			feedlist = (q1, q2, q3, q4, ainfo, instructor)
-			insert_db(sql, feedlist)
+			insert_db(sql1, feedlist)
 		return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 	elif session['status'] == 1:
 		sql="""
