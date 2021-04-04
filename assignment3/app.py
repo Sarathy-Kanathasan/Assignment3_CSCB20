@@ -127,23 +127,26 @@ def Marks():
 			FROM marks
 			WHERE id = ?
 			"""
-		viewmarks = query_db(sql, [session['id']], one = False )
-		sql = """
+		viewmarks = query_db(sql, [int(session['id'])], one = False )
+		sql1 = """
 			SELECT assignment
 			FROM marks 
 			WHERE id = ?
 			"""
-		assignments = query_db(sql, [session['id']], one = False)
+		assignments = query_db(sql1, [int(session['id'])], one = False)
 		#If remark is requested, enter information into remarks db
 		if request.method=="POST":
-			sql = """
-				INSERT INTO remarks(id, name, assignment, justification) VALUES (?, ?, ?, ?)
+			sql2 = """
+				INSERT INTO remark(id, name, assignment, justification) VALUES (?,?,?,?)
 				"""
-			feedlist = (session['id'], session['username'], request.form['assignment'], request.form['justification'])
-			return render_template('marksstudent.html', viewmarks=viewmarks, uname = session['username'], assignments =assignments)
+			id = int(session['id'])
+			name = str(session['username'])
+			assignment = request.form['assignment']
+			justification = str(request.form['justification'])
+			feedlist = (id, name, assignment, justification)
+			insert_db(sql2, feedlist)
 		#return render_template('marksstudent.html')
-		return render_template("marksstudent.html", viewmarks=viewmarks, uname  = session['username'], assignments =assignments)
-
+		return render_template('marksstudent.html', viewmarks=viewmarks, uname  = session['username'], assignments=assignments)
 	elif session['status'] == 1:
 		sql = """
 			SELECT *
