@@ -128,6 +128,13 @@ def Marks():
 			WHERE id = ?
 			"""
 		viewmarks = query_db(sql, [session['id']], one = False )
+		#If remark is requested, enter information into remarks db
+		if request.method=="POST":
+			sql = """
+				INSERT INTO remarks(id, name, assignment, justification) VALUES (?, ?, ?, ?)
+				"""
+			feedlist = (session['id'], session['username'], request.form['assignment'], request.form['justification'])
+			return render_template('marksstudent.html', viewmarks=viewmarks, uname = session['username'])
 		#return render_template('marksstudent.html')
 		return render_template("marksstudent.html", viewmarks=viewmarks, uname  = session['username'])
 
@@ -157,14 +164,10 @@ def AnonymousFeedback():
 			""" #select all teacher names
 		instructors = query_db(sql, args=(), one=False)
 		if request.method=="POST":
-			newfeed = request.form['q1'] #store answer to each question in newfeed.
-			newfeed = newfeed + " " + request.form['q2']
-			newfeed = newfeed + " " + request.form['q3']
-			newfeed = newfeed + " " + request.form['q4']
 			sql = """
-				INSERT INTO afeed(feedback, ainfo, instructor) VALUES (?, ?, ?)
+				INSERT INTO afeed(q1, q2, q3, q4, ainfo, instructor) VALUES (?, ?, ?, ?, ?, ?)
 				"""
-			feedlist = (newfeed, request.form['addi'], request.form['instructor'])
+			feedlist = (request.form['q1'], request.form['q2'], request.form['q3'], request.form['q4'], request.form['addi'], request.form['instructor'])
 			insert_db(sql, feedlist)
 
 			return render_template("anonymousfeedbackstudent.html", instructors=instructors)
