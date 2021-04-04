@@ -128,15 +128,21 @@ def Marks():
 			WHERE id = ?
 			"""
 		viewmarks = query_db(sql, [session['id']], one = False )
+		sql = """
+			SELECT assignment
+			FROM marks 
+			WHERE id = ?
+			"""
+		assignments = query_db(sql, [session['id']], one = False)
 		#If remark is requested, enter information into remarks db
 		if request.method=="POST":
 			sql = """
 				INSERT INTO remarks(id, name, assignment, justification) VALUES (?, ?, ?, ?)
 				"""
 			feedlist = (session['id'], session['username'], request.form['assignment'], request.form['justification'])
-			return render_template('marksstudent.html', viewmarks=viewmarks, uname = session['username'])
+			return render_template('marksstudent.html', viewmarks=viewmarks, uname = session['username'], assignments =assignments)
 		#return render_template('marksstudent.html')
-		return render_template("marksstudent.html", viewmarks=viewmarks, uname  = session['username'])
+		return render_template("marksstudent.html", viewmarks=viewmarks, uname  = session['username'], assignments =assignments)
 
 	elif session['status'] == 1:
 		sql = """
@@ -174,7 +180,7 @@ def AnonymousFeedback():
 		return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 	elif session['status'] == 1:
 		sql="""
-			SELECT q1, q2, q3, q4, ainfo
+			SELECT *
 			FROM afeed
 			WHERE instructor = ?
 			"""
