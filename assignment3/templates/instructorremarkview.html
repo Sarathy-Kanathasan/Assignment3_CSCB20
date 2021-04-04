@@ -78,7 +78,11 @@
                           <li>Justification: {{ r[3] }}</li>
                       <p>Additional comments:<br>{{ r[4] }}</p></ul><hr>
                       <br>
-                        
+                        <form method="POST" action="/remark">
+                            <input type = "hidden" name="id" value ={{r[0]}}>
+                            <input type = "hidden" name="assignment" value ={{r[2]}}>
+                            <input type="submit" name="close-remark" value="submit">
+                        </form>
                       {% endfor %}
                      
                     </label>
