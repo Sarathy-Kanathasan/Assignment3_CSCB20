@@ -91,17 +91,18 @@
                 <label> 
                   <h4><u>Do you see an issue with your marks?</u></h4>
                   <p> Please use the regrade request form below to petition your grades. </p>
-                </label>
-                <br>
-                <label> <b>just a placeholder:</b>
                     <form method = "post" action="/marksinstructor">
-                        <label for="id">Student ID:</label>
-                        <textarea id="id" name="id" cols="10" rows="1"></textarea>
-                        <label for="name">Student Name:</label>
-                        <textarea id="name" name="name" cols="10" rows="1"></textarea>
-                        <label for="grade">Grade:</label>
-                        <textarea id="grade" name="grade" cols="3" rows="1"></textarea>
-                        <input type="button" name="grade-submit" value="submit">
+                        <label for="assignment">Remark Request For:</label>
+                        <select name="assignment" id = "assignment">
+                            {% for a in assignments %}
+                            <option value=a>{{ a }}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+                        <label for="grade">Reason:</label>
+                        <br>
+                        <textarea id="justification" name="justification" cols="50" rows="5"></textarea>
+                        <input type="button" name="remark-submit" value="submit">
                 </label>
             </div>
         </body>
