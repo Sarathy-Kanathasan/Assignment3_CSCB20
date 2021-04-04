@@ -94,8 +94,8 @@
                     <form method = "post" action="/marksstudent">
                         <label for="assignment">Remark Request For:</label>
                         <select name="assignment" id = "assignment">
-                            {% for a in viewmarks %}
-                            <option value=a[3]>{{ a[3] }}</option>
+                            {% for a in assignments %}
+                            <option value=a>{{ a[0] }}</option>
                             {% endfor %}
                         </select>
                         <br>

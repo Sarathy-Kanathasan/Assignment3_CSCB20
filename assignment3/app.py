@@ -128,15 +128,21 @@ def Marks():
 			WHERE id = ?
 			"""
 		viewmarks = query_db(sql, [session['id']], one = False )
+		sql = """
+			SELECT assignment
+			FROM marks 
+			WHERE id = ?
+			"""
+		assignments = query_db(sql, [session['id']], one = False)
 		#If remark is requested, enter information into remarks db
 		if request.method=="POST":
 			sql = """
 				INSERT INTO remarks(id, name, assignment, justification) VALUES (?, ?, ?, ?)
 				"""
 			feedlist = (session['id'], session['username'], request.form['assignment'], request.form['justification'])
-			return render_template('marksstudent.html', viewmarks=viewmarks, uname = session['username'])
+			return render_template('marksstudent.html', viewmarks=viewmarks, uname = session['username'], assignments =assignments)
 		#return render_template('marksstudent.html')
-		return render_template("marksstudent.html", viewmarks=viewmarks, uname  = session['username'])
+		return render_template("marksstudent.html", viewmarks=viewmarks, uname  = session['username'], assignments =assignments)
 
 	elif session['status'] == 1:
 		sql = """
@@ -147,7 +153,7 @@ def Marks():
 		if request.method=="POST":
 			feedlist = (int(request.form['id']), request.form['name'], int(request.form['mark']), request.form['assignment'])
 			sql = """
-				INSERT INTO marks(id, name, mark) VALUES (?, ?, ?, ?)
+				INSERT INTO marks(id, name, mark, assignment) VALUES (?, ?, ?, ?)
 				"""
 			insert_db(sql, feedlist) #need error if id, name, or grade missing
 			return render_template("marksinstructor.html", viewmarks=viewmarks)
@@ -165,20 +171,24 @@ def AnonymousFeedback():
 		instructors = query_db(sql, args=(), one=False)
 		if request.method=="POST":
 			sql = """
-				INSERT INTO afeed(q1, q2, q3, q4, ainfo, instructor) VALUES (?, ?, ?, ?, ?, ?)
+				INSERT INTO afeed(q1, q2, q3, q4, ainfo, instructor) VALUES (?,?,?,?,?,?)
 				"""
-			feedlist = (request.form['q1'], request.form['q2'], request.form['q3'], request.form['q4'], request.form['addi'], request.form['instructor'])
+			q1 = request.form['q1']
+			q2 = request.form['q2']
+			q3 = request.form['q3']
+			q4 = request.form['q4']
+			ainfo = request.form['addi']
+			instructor = request.form['instructor']
+			feedlist = (q1, q2, q3, q4, ainfo, instructor)
 			insert_db(sql, feedlist)
-
-			return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 		return render_template("anonymousfeedbackstudent.html", instructors=instructors)
 	elif session['status'] == 1:
 		sql="""
-			SELECT q1, q2, q3, q4, ainfo
+			SELECT *
 			FROM afeed
 			WHERE instructor = ?
 			"""
-		feedback = query_db(sql, [session['username']],one=False)
+		feedback = query_db(sql, [str(session['username'])],one=False)
 		return render_template('anonymousfeedbackinstructor.html', feedback=feedback)
 
 @app.route('/logout')

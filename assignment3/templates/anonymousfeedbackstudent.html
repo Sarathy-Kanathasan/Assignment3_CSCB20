@@ -94,7 +94,7 @@
                         <label for="instructor">Select your instructor:</label>
                         <select name="instructor" id = "instructor">
                           {% for a in instructors %}
-                            <option value=a>{{ a[0] }}</option>
+                            <option value={{a[0]}}>{{ a[0] }}</option>
                           {% endfor %}
                         </select>
                         <br>
