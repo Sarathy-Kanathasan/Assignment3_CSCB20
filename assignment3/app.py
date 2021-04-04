@@ -151,12 +151,15 @@ def Marks():
 			"""
 		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 
 		if request.method=="POST":
-			feedlist = (int(request.form['id']), request.form['name'], int(request.form['mark']), request.form['assignment'])
-			sql = """
-				INSERT INTO marks(id, name, mark, assignment) VALUES (?, ?, ?, ?)
+			id = int(request.form['id'])
+			name = request.form['name']
+			mark = int(request.form['grade'])
+			assignment = request.form['assignment']
+			feedlist = (id, name, mark, assignment)
+			sql1 = """
+				INSERT INTO marks(id, name, mark, assignment) VALUES (?,?,?,?)
 				"""
-			insert_db(sql, feedlist) #need error if id, name, or grade missing
-			return render_template("marksinstructor.html", viewmarks=viewmarks)
+			insert_db(sql1, feedlist) #need error if id, name, or grade missing
 		return render_template('marksinstructor.html', viewmarks=viewmarks) #returns the tmeplate aswell as the marks that should be viewed
 
 @app.route('/AnonymousFeedback', methods=['GET', 'POST'])		
