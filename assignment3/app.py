@@ -208,24 +208,33 @@ def create_acc():
 		types = request.form['type']
 		check_types = ""
 		check_types = str(types)
-		id = 12
 		#i =id+1
 		print(check_types)
 		if fname == "" or lname == "" or passw == "" or check_types == "" :
 			print(types)
 			return redirect(url_for('login')) #will temprarily redirect you to login page if none type
 				#need to erditect too an error message
-			
-			# ad sql  queries
 
+		#query db for username
+		unames = query_db("SELECT *  FROM users WHERE username = ? " , [uname] )
+		if len(unames) > 1:
+			return redirect(url_for('login'))
+		
+		#query db for largest index
+		ind = query_db("SELECT id from users")
+		ids = max(ind)
+		id = ids[0]
+		id = id+1
+		
+
+		print(len(unames))
+		# add sql  queries
 		sql = """
 			INSERT INTO users(id, username, password, type ) VALUES (?,?,?,?)
 			"""
 		newfeed = (id,uname,passw,types) #store the new value that they enter in to the variable newfeed
 
 
-		# feedlist = [] #create empty list to add the form inputs
-		# feedlist.append(newfeed) # appends value of the variable new feed into the feedlist
 		insert_db(sql, newfeed)
 	return render_template('create_acc.html')
 
