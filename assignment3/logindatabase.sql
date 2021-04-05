@@ -17,13 +17,14 @@ CREATE TABLE IF NOT EXISTS marks (
     id INTEGER NOT NULL,
     name VARCHAR(20) NOT NULL,
     mark INTEGER CHECK(mark>0) NOT NULL,
-    assignment VARCHAR(30) NOT NULL
+    assignment VARCHAR(30) NOT NULL,
+    remarkstatus VARCHAR NOT NULL
 );
 
 
-INSERT INTO marks VALUES(1, 'Student1', 50, 'Midterm');
-INSERT INTO marks VALUES(1, 'Student1', 100, 'Assignment 1');
-INSERT INTO marks VALUES(2, 'Student2', 10, 'Assignment 1');
+INSERT INTO marks VALUES(1, 'Student1', 50, 'Midterm', 'CLOSED');
+INSERT INTO marks VALUES(1, 'Student1', 100, 'Assignment 1', 'CLOSED');
+INSERT INTO marks VALUES(2, 'Student2', 10, 'Assignment 1', 'OPEN');
 
 CREATE TABLE IF NOT EXISTS afeed (
     q1 VARCHAR(1000) NOT NULL,
