@@ -76,13 +76,15 @@
                           <li>Name: {{ r[1] }}</li>
                           <li>Assignment: {{ r[2] }}</li>
                           <li>Justification: {{ r[3] }}</li>
-                      <p>Additional comments:<br>{{ r[4] }}</p></ul><hr>
+                      <p>Additional comments:<br>{{ r[4] }}</p>
                       <br>
-                        <form method="POST" action="/remark">
-                            <input type = "hidden" name="id" value ={{r[0]}}>
-                            <input type = "hidden" name="assignment" value ={{r[2]}}>
-                            <input type="submit" name="close-remark" value="submit">
-                        </form>
+                      <form method="POST" action="/remark">
+                          <input type = "hidden" name="id" value ={{r[0]}}>
+                          <input type = "hidden" name="assignment" value ={{r[2]}}>
+                          <input type="submit" name="close-remark" value="Close">
+                      </form>
+                      </ul><hr>
+                        
                       {% endfor %}
                      
                     </label>
