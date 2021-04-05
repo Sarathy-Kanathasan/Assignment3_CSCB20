@@ -134,7 +134,7 @@ def remark():
 def Marks():
 	if session['status'] == 0:
 		sql = """
-			SELECT name, mark, assignment
+			SELECT name, mark, assignment, remarkstatus
 			FROM marks
 			WHERE id = ?
 			"""
@@ -147,13 +147,20 @@ def Marks():
 		assignments = query_db(sql1, [int(session['id'])], one = False)
 		#If remark is requested, enter information into remarks db
 		if request.method=="POST":
-			sql2 = """
-				INSERT INTO remark(id, name, assignment, justification) VALUES (?,?,?,?)
-				"""
 			id = int(session['id'])
 			name = str(session['username'])
 			assignment = request.form['assignment']
 			justification = str(request.form['justification'])
+			sql3 = """
+				UPDATE marks SET remarkstatus=0 WHERE id=? AND assignment=?
+				"""
+			feedlist2 = (id, assignment)
+			cur=get_db()
+			cur.execute(sql3, feedlist2)
+			cur.commit()
+			sql2 = """
+				INSERT INTO remark(id, name, assignment, justification) VALUES (?,?,?,?)
+				"""
 			feedlist = (id, name, assignment, justification)
 			insert_db(sql2, feedlist)
 		#return render_template('marksstudent.html')
