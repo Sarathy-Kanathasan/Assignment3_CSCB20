@@ -10,9 +10,8 @@
       </head>
 
       <div > <!--box for the title-->
-        <h1 class = title><i>CSCB63 Design and Analysis of Data Structures Student</i><div  ></div></h1>
+        <h1 class = title><i>CSCB63 Design and Analysis of Data Structures Instructor</i><div  ></div></h1>
     </div><!--end of box for the title-->
-
     <div class ="leftside"> <!--box for the left side-->
       <div id="emblem"> 
         <img src="https://images.squarespace-cdn.com/content/v1/5ee8fb68fe42c61403d7404b/1597170393189-PCSJHCIT5I53X725R8L3/ke17ZwdGBToddI8pDm48kCVrrbX2xFid7h0pbEubsdF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1URCaOH7mMJjmLWicl2lKuFaFUfduCYe4FMFuveNlgm9OH3bqxw7fF48mhrq5Ulr0Hg/utsc+logo+off+white.png"> 
@@ -24,8 +23,6 @@
         <h3>
 
         
-
-        <!--<li ><a href = /AnonymousFeedback class="active"> AnonymousFeedback </a></li>-->
             
         <li ><a href = /index > Home </a></li>
 
@@ -66,43 +63,33 @@
 
 
     <div class = middle> <!--start of the class description box-->
-            <div> <h2 class = "maintitle"> <b>Anonymous Feedback CSCB63</b></h2>  </div>
+            <div> <h2 class = "maintitle"> <b>Remark Requests CSCB63</b></h2>  </div>
             <body>
                 <!-- task 1: create a title for the todo list using the <h1></h1> tag -->
                 <div >
                     <!-- task 2: create a label for the form using the <label></label> tag -->
-                    <label> Please Enter Feedback. This <i>will</i> be anonymous</label><br>
-                    
-                    <!-- task 3: create the form using the <form></form> tag;
-                         remember to set routing here -->
-                    
-                    <form method="POST" action="/AnonymousFeedback">
-                       <label for="q1">Q1: What do you like about the instructor?</label><br>
-                        <textarea placeholder="Type answer for Q1 here" id="q1" name="q1" cols="50" rows="5"></textarea><br>
-                        <br>
-                        <label for="q2">Q2: What do you recommend the instructor to do to improve their teaching?</label><br>
-                        <textarea placeholder="Type answer for Q2 here" id="q2" name="q2" cols="50" rows="5"></textarea><br>
-                        <br>
-                        <label for="q3">Q3: What do you like about the labs?</label><br>
-                        <textarea placeholder="Type answer for Q3 here" id="q3" name="q3" cols="50" rows="5"></textarea><br>
-                        <br>
-                        <label for="q4">Q4: What do you recommend the lab instructors to do to improve their lab teaching?</label><br>
-                        <textarea placeholder="Type answer for Q4 here" id="q4" name="q4" cols="50" rows="5"></textarea><br>
-                        <br>
-                        <label for="extra">Additional comments:</label><br>
-                        <textarea placeholder="Any additional comments?" id="extra" name = "addi" cols="50" rows="10"></textarea>
-                        <br>
-                        <br>
-                        <label for="instructor">Select your instructor:</label>
-                        <select name="instructor" id = "instructor">
-                          {% for a in instructors %}
-                            <option value={{a[0]}}>{{ a[0] }}</option>
-                          {% endfor %}
-                        </select>
-                        <br>
-                        <br>
-                        <input onclick="anonfeedbackpopup()"  type="submit" name="comment-submit" value="submit" > <!-- create the submit button using the <input></input> tag but with type="submit" -->
-                    </form>
+                    <label class = vert> Remark Requests from the course:<hr>
+                      
+                      {% for r in remarkreq %}
+                      
+                      <ul class = vert><li >ID: {{ r[0] }}</li>
+                          <li>Name: {{ r[1] }}</li>
+                          <li>Assignment: {{ r[2] }}</li>
+                          <li>Justification: {{ r[3] }}</li>
+                      <p>Additional comments:<br>{{ r[4] }}</p>
+                      <br>
+                      <form method="POST" action="/remark">
+                          <input type = "hidden" name="id" value ={{r[0]}}>
+                          <input type = "hidden" name="assignment" value ={{r[2]}}>
+                          <input type="submit" name="close-remark" value="Close">
+                      </form>
+                      </ul><hr>
+                        
+                      {% endfor %}
+                     
+                    </label>
+                    <!--displays the data from the anon feed back db-->
+
                 </div>
             </body>
         
@@ -119,7 +106,6 @@
   <div class="xfooter"><!--start of footer box -->
 
   </body><!--end of footer box -->
-  <script src= "static\script.js"></script>
  
   <footer>
     <hr>

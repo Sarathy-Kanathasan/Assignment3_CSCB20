@@ -76,11 +76,15 @@
                 <!-- task 2: create a label for the form using the <label></label> tag -->
                 <label> <b>Hello {{uname}}, your marks in the class so far are listed below:</b>
                   
-                  {% for m, n, p in viewmarks %}
+                  {% for m, n, p, s in viewmarks %}
                   
                   <ul>
                     <div class = "markslist"> <h4><b>Assignment: </b> {{p}} </h4> 
                     <h6> <b>Grade: </b>{{n}} </h6>
+                    <br>
+                    {% if s != NULL %}
+                    <h6> <b>Remark Status: {{s}}</b></h6>
+                    {% endif %}
                     </div><hr>
                   </ul>
 
@@ -103,11 +107,11 @@
                         <label for="justification">Reason:</label>
                         <br>
                         <textarea type="text" id="justification" name="justification" cols="50" rows="5"></textarea>
-                        <input type="submit" name="remark-req-submit" value="submit">
+                        <input onclick="remarkpopup()" type="submit" name="remark-req-submit" value="submit" >
                     </form>
             </div>
         </body>
-    
+    <script src= "static\script.js"></script>
 
 
         
