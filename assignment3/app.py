@@ -130,10 +130,13 @@ def remark():
 			"""
 	if session['status'] == 1:
 		sql12 = """
-			SELECT *
+			SELECT remark.id, remark.name, remark.assignment, justification, remarkstatus
 			FROM remark
+			INNER JOIN marks
+			ON remark.id=marks.id AND remark.assignment=marks.assignment
 			"""
 		remarkreq = query_db(sql12,args=(),one=False)
+
 		if request.method == "POST":
 			id = request.form['id']
 			assignment = request.form['assignment']
