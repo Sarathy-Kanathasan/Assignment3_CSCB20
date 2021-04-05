@@ -71,12 +71,11 @@
                     <label class = vert> Remark Requests from the course:<hr>
                       
                       {% for r in remarkreq %}
-                      
+                      {% if r[4]=='OPEN' %}
                       <ul class = vert><li >ID: {{ r[0] }}</li>
                           <li>Name: {{ r[1] }}</li>
                           <li>Assignment: {{ r[2] }}</li>
                           <li>Justification: {{ r[3] }}</li>
-                      <p>Additional comments:<br>{{ r[4] }}</p>
                       <br>
                       <form method="POST" action="/remark">
                           <input type = "hidden" name="id" value ={{r[0]}}>
@@ -84,7 +83,8 @@
                           <input type="submit" name="close-remark" value="Close">
                       </form>
                       </ul><hr>
-                        
+                      
+                      {% endif %}
                       {% endfor %}
                      
                     </label>
