@@ -47,3 +47,11 @@ img{
     margin-right: -5px;
     padding: 0%;
 }
+
+#hidden{
+    opacity: 0;
+}
+
+#invalid{
+    color: red;
+}

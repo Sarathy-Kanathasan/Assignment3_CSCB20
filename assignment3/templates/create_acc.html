@@ -5,6 +5,7 @@
           <meta charset="utf-8">
           <title>LOGIN</title>
           <link rel="stylesheet" href ="static\create_acc.css" />
+          
     </head>
 
     <body>
@@ -25,19 +26,25 @@
             </div>
 
             <form method="post"><!--Start of login form-->
-                <br>
+                <div id = hidden>{{checker}}</div>
+                <div id = hidden2>{{empty_err}}</div>
+                <div id = invalid>
+                    <script src="static\create_acc.js"></script>
+                </div>
+                
+                 
                 <p>First name:<input type=text  name=fname placeholder="Enter First Name">
                 <p>Last name:<input type=text name=lname placeholder="Enter Last Name">   
                 <p>Username:<input type=text name=username placeholder="Enter Username">
                 <p>Password:<input type=password name=password placeholder="Enter Password"><br>
                 <br>    
                 <SPAN>
-                Student:<input type= radio name=type value= 0>
+                Student:<input type= radio name=type value= 0 checked>
                 Instructor:<input type= radio name=type value= 1>
                 </SPAN>
                   
 
-                <p class = buttom><input type=submit value=Submit> 
+                <p class = buttom><input type=submit value=Submit checked> 
                 <p><a href= /login>Have an Account?</a></p>    
                 <br>
             </form> <!--End of login form-->

@@ -25,7 +25,10 @@
             </div>
 
             <form method="post"><!--Start of login form-->
-                <br>
+                <div id = hidden>{{error}}</div>
+                <div id = invalid>
+                    <script src="static\login_err.js"></script>
+                </div>
                 <p>Username:<input type=text name=username placeholder="Enter Username">
                 <p>Password:<input type=password name=password placeholder="Enter Password">
 

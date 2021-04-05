@@ -63,6 +63,7 @@ def index():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
+	err = 0
 	if request.method=='POST':
 		sql = """
 			SELECT *
@@ -78,13 +79,14 @@ def login():
 
 					welcome_name = result[1]
 					print(welcome_name)
-					return render_template('index.html',welcome_name = welcome_name)					
-		return "Incorrect UserName/Password"
+					return render_template('index.html',welcome_name = welcome_name)
+		err = 1								
+		return render_template('login.html', error = err )
 	
 	elif 'username' in session:
 		return redirect(url_for('index'))
 	else:
-		return render_template('login.html')
+		return render_template('login.html', error = err)
 
 @app.route('/index')		
 def home():
@@ -206,6 +208,8 @@ def logout():
 
 @app.route('/create_acc', methods = ['GET', 'POST'])
 def create_acc():
+	usernamechecker = 0
+	empty = 0
 	if request.method=="POST":
 		fname = request.form['fname'] #store the new value that they enter in to the variable newfeed
 		lname = request.form['fname']
@@ -214,17 +218,21 @@ def create_acc():
 		types = request.form['type']
 		check_types = ""
 		check_types = str(types)
-		#i =id+1
+		usernamechecker = 0
+		empty = 0
 		print(check_types)
 		if fname == "" or lname == "" or passw == "" or check_types == "" :
-			print(types)
-			return redirect(url_for('login')) #will temprarily redirect you to login page if none type
-				#need to erditect too an error message
+			empty = 1
+			return render_template('create_acc.html' , checker = usernamechecker, empty_err = empty)
+
+
 
 		#query db for username
 		unames = query_db("SELECT *  FROM users WHERE username = ? " , [uname] )
 		if len(unames) > 1:
-			return redirect(url_for('login'))
+			usernamechecker = 1
+			#return redirect(url_for('login'))
+			return render_template('create_acc.html' , checker = usernamechecker, empty_err = empty)
 		
 		#query db for largest index
 		ind = query_db("SELECT id from users")
@@ -242,7 +250,7 @@ def create_acc():
 
 
 		insert_db(sql, newfeed)
-	return render_template('create_acc.html')
+	return render_template('create_acc.html',checker = usernamechecker, empty_err = empty)
 
 
 
