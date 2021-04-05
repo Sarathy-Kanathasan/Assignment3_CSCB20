@@ -126,6 +126,14 @@ def remark():
 			FROM remark
 			"""
 		remarkreq = query_db(sql12,args=(),one=False)
+		if request.method == "POST":
+			id = request.form['id']
+			assignment = request.form['assignment']
+			sql = """
+				UPDATE marks SET remarkstatus="CLOSED" WHERE id=? AND assignment=?
+				"""
+			feedlist = (id, assignment)
+			insert_db(sql, feedlist)
 	return render_template('instructorremarkview.html', remarkreq=remarkreq )
 
 
@@ -167,7 +175,7 @@ def Marks():
 		return render_template('marksstudent.html', viewmarks=viewmarks, uname  = session['username'], assignments=assignments)
 	elif session['status'] == 1:
 		sql = """
-			SELECT *
+			SELECT id, name, mark, assignment
 			FROM marks
 			"""
 		viewmarks= query_db(sql,args=(),one=False)	# runs the sql query using the method query_db to get the relevnat info 		
