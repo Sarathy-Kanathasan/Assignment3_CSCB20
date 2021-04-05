@@ -81,6 +81,10 @@
                   <ul>
                     <div class = "markslist"> <h4><b>Assignment: </b> {{p}} </h4> 
                     <h6> <b>Grade: </b>{{n}} </h6>
+                    <br>
+                    {% if s != NULL %}
+                    <h6> <b>Remark Status: {{s}}</b></h6>
+                    {% endif %}
                     </div><hr>
                   </ul>
 
