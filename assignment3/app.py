@@ -152,7 +152,7 @@ def Marks():
 			assignment = request.form['assignment']
 			justification = str(request.form['justification'])
 			sql3 = """
-				UPDATE marks SET remarkstatus=0 WHERE id=? AND assignment=?
+				UPDATE marks SET remarkstatus="OPEN" WHERE id=? AND assignment=?
 				"""
 			feedlist2 = (id, assignment)
 			cur=get_db()
