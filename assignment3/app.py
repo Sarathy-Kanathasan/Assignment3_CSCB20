@@ -122,6 +122,12 @@ def courseteam():
 
 @app.route('/remark', methods=['GET', 'POST'])
 def remark():
+	if session['status'] == 0:
+		sql = """
+			SELECT name, mark, assignment, remarkstatus
+			FROM marks
+			WHERE id = ?
+			"""
 	if session['status'] == 1:
 		sql12 = """
 			SELECT *
