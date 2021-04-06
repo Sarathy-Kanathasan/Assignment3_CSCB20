@@ -136,6 +136,7 @@ def remark():
 			FROM remark
 			INNER JOIN marks
 			ON remark.id=marks.id AND remark.assignment=marks.assignment
+			WHERE remarkstatus='OPEN'
 			"""
 		remarkreq = query_db(sql12,args=(),one=False)
 
