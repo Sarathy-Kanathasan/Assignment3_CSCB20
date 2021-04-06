@@ -179,6 +179,7 @@ def Marks():
 			name = str(session['username'])
 			assignment = request.form['assignment']
 			justification = str(request.form['justification'])
+			#update remark status as open
 			sql3 = """
 				UPDATE marks SET remarkstatus="OPEN" WHERE id=? AND assignment=?
 				"""
@@ -186,11 +187,27 @@ def Marks():
 			cur=get_db()
 			cur.execute(sql3, feedlist2)
 			cur.commit()
-			sql2 = """
-				INSERT INTO remark(id, name, assignment, justification) VALUES (?,?,?,?)
+			#See if student already made a remark req
+			sql4 = """
+				SELECT *
+				FROM remark
+				WHERE id=? AND assignment=?
 				"""
-			feedlist = (id, name, assignment, justification)
-			insert_db(sql2, feedlist)
+			cur = get_db().execute(sql4, feedlist2)
+			rv = cur.fetchall()
+			if rv == []:
+			#If first req, insert into remark db	
+				sql2 = """
+					INSERT INTO remark(id, name, assignment, justification) VALUES (?,?,?,?)
+					"""
+				feedlist = (id, name, assignment, justification)
+				insert_db(sql2, feedlist)
+			else:
+				sql2 = """
+					UPDATE remark SET justification=? WHERE id=? AND assignment=?
+					"""
+				feedlist = (justification, id, assignment)
+				insert_db(sql2, feedlist)
 		#return render_template('marksstudent.html')
 		return render_template('marksstudent.html', viewmarks=viewmarks, uname  = session['username'], assignments=assignments)
 	elif session['status'] == 1:
