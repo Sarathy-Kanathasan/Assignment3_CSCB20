@@ -123,11 +123,13 @@ def courseteam():
 @app.route('/remark', methods=['GET', 'POST'])
 def remark():
 	if session['status'] == 0:
-		sql = """
-			SELECT name, mark, assignment, remarkstatus
-			FROM marks
-			WHERE id = ?
-			"""
+		# sql = """
+		# 	SELECT name, mark, assignment, remarkstatus
+		# 	FROM marks
+		# 	WHERE id = ?
+		# 	"""
+		# ^^^ I have no idea why this is here, lmk or ill delete for nect push
+		return 'please sign in wih a registered instuctor account to veiw this page'
 	if session['status'] == 1:
 		sql12 = """
 			SELECT remark.id, remark.name, remark.assignment, justification, remarkstatus
