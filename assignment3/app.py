@@ -147,7 +147,13 @@ def remark():
 				UPDATE marks SET remarkstatus="CLOSED" WHERE id=? AND assignment=?
 				"""
 			feedlist = (id, assignment)
-			insert_db(sql, feedlist)
+			cur=get_db()
+			cur.execute(sql, feedlist)
+			cur.commit()
+			sql2= """
+				DELETE FROM remark WHERE id=? AND assignment=?
+				"""
+			insert_db(sql2, feedlist)
 	return render_template('instructorremarkview.html', remarkreq=remarkreq )
 
 
