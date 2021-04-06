@@ -38,7 +38,7 @@
 
         <li ><a href = /Marks> Marks </a></li>
 
-        <li><a href = /remark> Remark Requests </a></li>
+        <li><a href = /remark> Remark  </a></li>
 
         <li > <a href = "static\syllabus.pdf" target="blank">Syllabus </a></li>
 
@@ -71,7 +71,7 @@
                     <label class = vert> Remark Requests from the course:<hr>
                       
                       {% for r in remarkreq %}
-                      {% if r[4]=='OPEN' %}
+                      {% if r[4]=='OPEN' %} 
                       <ul class = vert><li >ID: {{ r[0] }}</li>
                           <li>Name: {{ r[1] }}</li>
                           <li>Assignment: {{ r[2] }}</li>
@@ -84,7 +84,7 @@
                       </form>
                       </ul><hr>
                       
-                      {% endif %}
+                       {% endif %}
                       {% endfor %}
                      
                     </label>

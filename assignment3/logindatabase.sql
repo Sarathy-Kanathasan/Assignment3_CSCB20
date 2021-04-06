@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS marks (
     name VARCHAR(20) NOT NULL,
     mark INTEGER CHECK(mark>0) NOT NULL,
     assignment VARCHAR(30) NOT NULL,
-    remarkstatus VARCHAR NOT NULL
+    remarkstatus VARCHAR(30) NOT NULL
 );
 
 

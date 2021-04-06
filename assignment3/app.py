@@ -197,9 +197,11 @@ def Marks():
 			name = request.form['name']
 			mark = int(request.form['grade'])
 			assignment = request.form['assignment']
-			feedlist = (id, name, mark, assignment)
+			remarkstatus="CLOSED"
+			feedlist = (id, name, mark, assignment, remarkstatus)
+			
 			sql1 = """
-				INSERT INTO marks(id, name, mark, assignment) VALUES (?,?,?,?)
+				INSERT INTO marks(id, name, mark, assignment, remarkstatus) VALUES (?,?,?,?,?)
 				"""
 			insert_db(sql1, feedlist) #need error if id, name, or grade missing
 		return render_template('marksinstructor.html', viewmarks=viewmarks) #returns the tmeplate aswell as the marks that should be viewed
