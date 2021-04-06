@@ -129,7 +129,7 @@ def remark():
 		# 	WHERE id = ?
 		# 	"""
 		# ^^^ I have no idea why this is here, lmk or ill delete for nect push
-		return 'please sign in wih a registered instuctor account to veiw this page'
+		return render_template('remarkstudentview.html')
 	if session['status'] == 1:
 		sql12 = """
 			SELECT remark.id, remark.name, remark.assignment, justification, remarkstatus
