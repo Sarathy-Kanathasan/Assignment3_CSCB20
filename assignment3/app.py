@@ -225,7 +225,7 @@ def Marks():
 			feedlist2 = (id, assignment)
 			sql4 = """
 				SELECT *
-				FROM mark
+				FROM marks
 				WHERE id=? AND assignment=?
 				"""
 			cur = get_db().execute(sql4, feedlist2)
@@ -233,7 +233,7 @@ def Marks():
 			if rv == []:
 			#If first req, insert into remark db	
 				sql2 = """
-					INSERT INTO mark(id, name, mark, assignment, remarkstatus) VALUES (?,?,?,?,?)
+					INSERT INTO marks(id, name, mark, assignment, remarkstatus) VALUES (?,?,?,?,?)
 					"""
 				feedlist = (id, name, mark, assignment, remarkstatus)
 				insert_db(sql2, feedlist)
