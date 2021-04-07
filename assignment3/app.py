@@ -5,7 +5,7 @@ import sqlite3
 from flask import Flask, render_template, request, g,session, redirect, url_for, escape
 
 # the database file we are going to communicate with
-DATABASE = './logindatabase.db'
+DATABASE = './assignment3.db'
 
 # connects to the database
 def get_db():

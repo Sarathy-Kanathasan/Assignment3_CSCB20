@@ -1,17 +1,28 @@
 <!DOCTYPE hmtl>
 <html  lang="en" dir="ltr">
     <head >
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
+        <meta charset="utf-8" http-equiv="refresh" content="15">
+        
         <meta name="viewport" content = "width=device-width, initial-scale=1">
         <title>CSCB63 Design and Analysis of Data Structures</title>
-        <link rel="stylesheet" href ="static\Calendar.css" />
-        <link rel="stylesheet" href="static\index.css"/>
+        <link rel="stylesheet" href ="static\index.css" type="text/css" />
+        <link rel="stylesheet" href ="static\lectures.css" type="text/css" />
+        
       </head>
 
-      <div > <!--box for the title-->
-        <h1 class = title><i>CSCB63 Design and Analysis of Data Structures Instructor</i><div  ></div></h1>
+
+
+
+  <body id = 'b63body'> <!--box for the entire page-->
+
+    <div > <!--box for the title-->
+        <h1 class = title><i>CSCB63 Design and Analysis of Data Structures</i> <div >  </button></div> </h1>
+        
     </div><!--end of box for the title-->
+    
+    
+   
+        
     <div class ="leftside"> <!--box for the left side-->
       <div id="emblem"> 
         <img src="https://images.squarespace-cdn.com/content/v1/5ee8fb68fe42c61403d7404b/1597170393189-PCSJHCIT5I53X725R8L3/ke17ZwdGBToddI8pDm48kCVrrbX2xFid7h0pbEubsdF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1URCaOH7mMJjmLWicl2lKuFaFUfduCYe4FMFuveNlgm9OH3bqxw7fF48mhrq5Ulr0Hg/utsc+logo+off+white.png"> 
@@ -36,9 +47,9 @@
 
         <li > <a href = /Assignments>Assignments </a></li>
 
-        <li ><a href = /Marks> Marks </a></li>
+        <li ><a href = /Marks > Marks </a></li>
 
-        <li><a href = /remark> Remark </a></li>
+        <li><a href = /remark > Remark </a></li>
 
         <li > <a href = "static\syllabus.pdf" target="blank">Syllabus </a></li>
 
@@ -48,66 +59,61 @@
 
         <li > <a href = /Calendar>Calendar </a></li>
 
-        <li ><a href = /links > Links </a></li>
+        <li ><a href = /links  > Links </a></li>
 
         <li class = a feed> <a href = /courseteam>Course Team </a></li>
 
-        <li class = a feed> <a href = /AnonymousFeedback>Anonymous Feedback </a></li>
+        <li class = a feed > <a class="active" href = /AnonymousFeedback>Anonymous Feedback </a></li>
 
         <li><a href =/logout class = "log">Logout</a></li>
         
         </h3>
-      </ul>             
+      </ul>                     
     </div> <!--end of the left side box-->
-
-
-
-    <div class = middle> <!--start of the class description box-->
-            <div> <h2 class = "maintitle"> <b>Anonymous Feedback CSCB63</b></h2>  </div>
-            <body>
-                <!-- task 1: create a title for the todo list using the <h1></h1> tag -->
-                <div >
-                    <!-- task 2: create a label for the form using the <label></label> tag -->
-                    <label> Feedback from the course:<hr>
-                      
-                      {% for a in feedback %}
-                      
-                      <ul class = vert><li>Q1: What do you like about the instructor? {{ a[0] }}</li>
-                          <li>Q2: What do you recommend the instructor to do to improve their teaching? {{ a[1] }}</li>
-                          <li>Q3: What do you like about the labs? {{ a[2] }}</li>
-                          <li>Q4: What do you recommend the lab instructors to do to improve their lab teaching? {{ a[3] }}</li>
-                      <p>Additional comments:<br>{{ a[4] }}</p></ul><hr>
-                      <br>
-                        
-                      {% endfor %}
-                     
-                    </label>
-                    <!--displays the data from the anon feed back db-->
-
-                </div>
-            </body>
-        
-        
-  
-
+    <div class = middle>
+      <div> <h2 class = "maintitle"> <b>Anonymous Feedback CSCB63</b></h2>  </div>
             
+      <!-- task 1: create a title for the todo list using the <h1></h1> tag -->
+      <div >
+          <!-- task 2: create a label for the form using the <label></label> tag -->
+          <label> Feedback from the course:<hr>
+            
+            {% for a in feedback %}
+            
+            <ul class = vert><li>Q1: <b>Q1: What do you like about the instructor?</b> {{ a[0] }}</li>
+                <li><b>Q2: What do you recommend the instructor to do to improve their teaching?</b>What do you recommend the instructor to do to improve their teaching? {{ a[1] }}</li>
+                <li><b>Q3: What do you like about the labs?</b> {{ a[2] }}</li>
+                <li><b>Q4: What do you recommend the lab instructors to do to improve their lab teaching?</b> {{ a[3] }}</li>
+            <p>Additional comments:<br>{{ a[4] }}</p></ul><hr>
+            <br>
+              
+            {% endfor %}
+           
+          </label>
+          <!--displays the data from the anon feed back db-->
+          <div><a class = links href = 'https://www.youtube.com/watch?v=0BvfVM0sBfI' target = blank>CLICK FOR MORE ANON FEEDBACK</a></div>
+      </div>
+    <script src= "static\script.js"></script>
+
+
+        
 
     </div ><!--end of the class description box -->
 
+</body>
 
-  </div><!--end of box for entire page-->
 
-  <div class="xfooter"><!--start of footer box -->
 
-  </body><!--end of footer box -->
- 
-  <footer>
-    <hr>
-    <b>University of Toronto Scarborough</b>  1265 Military Trail, Toronto, ON. Canada, M1C 1A4, Phone: (416) 287 8872
-    <hr>
-    <a class=  'links' href = https://www.utsc.utoronto.ca/cms/ target="blank">  Faculty of Computer Sciences</a> <br>
-    <br>
-    Website design by Joshua Fernades and Sarathy Kanathasan &#169
-  </footer>
+<div class="xfooter"><!--start of footer box -->
+<footer>
+  <hr>
+  <b>University of Toronto Scarborough</b>  1265 Military Trail, Toronto, ON. Canada, M1C 1A4, Phone: (416) 287 8872
+  <hr>
+  <a class=  'links' href = https://www.utsc.utoronto.ca/cms/ target="blank">  Faculty of Computer Sciences</a> <br>
+  <br>
+  Website design by Joshua Fernades and Sarathy Kanathasan &#169
+</footer>
+</div>
+
 
 </html>
