@@ -123,12 +123,6 @@ def courseteam():
 @app.route('/remark', methods=['GET', 'POST'])
 def remark():
 	if session['status'] == 0:
-		# sql = """
-		# 	SELECT name, mark, assignment, remarkstatus
-		# 	FROM marks
-		# 	WHERE id = ?
-		# 	"""
-		# ^^^ I have no idea why this is here, lmk or ill delete for nect push
 		return render_template('remarkstudentview.html')
 	if session['status'] == 1:
 		sql12 = """
@@ -142,7 +136,8 @@ def remark():
 
 		if request.method == "POST":
 			id = request.form['id']
-			assignment = request.form['assignment']
+			assignment = str(request.form['assignment'])
+			assignment = assignment.replace(" ", "")
 			sql = """
 				UPDATE marks SET remarkstatus="CLOSED" WHERE id=? AND assignment=?
 				"""
@@ -177,7 +172,8 @@ def Marks():
 		if request.method=="POST":
 			id = int(session['id'])
 			name = str(session['username'])
-			assignment = request.form['assignment']
+			assignment = str(request.form['assignment'])
+			assignment = assignment.replace(" ", "")
 			justification = str(request.form['justification'])
 			#update remark status as open
 			sql3 = """
@@ -220,7 +216,8 @@ def Marks():
 			id = int(request.form['id'])
 			name = request.form['name']
 			mark = int(request.form['grade'])
-			assignment = request.form['assignment']
+			assignment = str(request.form['assignment'])
+			assignment = assignment.replace(" ", "")
 			remarkstatus="CLOSED"
 			feedlist2 = (id, assignment)
 			sql4 = """
