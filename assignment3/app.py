@@ -222,12 +222,27 @@ def Marks():
 			mark = int(request.form['grade'])
 			assignment = request.form['assignment']
 			remarkstatus="CLOSED"
-			feedlist = (id, name, mark, assignment, remarkstatus)
-			
-			sql1 = """
-				INSERT INTO marks(id, name, mark, assignment, remarkstatus) VALUES (?,?,?,?,?)
+			feedlist2 = (id, assignment)
+			sql4 = """
+				SELECT *
+				FROM marks
+				WHERE id=? AND assignment=?
 				"""
-			insert_db(sql1, feedlist) #need error if id, name, or grade missing
+			cur = get_db().execute(sql4, feedlist2)
+			rv = cur.fetchall()
+			if rv == []:
+			#If first req, insert into remark db	
+				sql2 = """
+					INSERT INTO marks(id, name, mark, assignment, remarkstatus) VALUES (?,?,?,?,?)
+					"""
+				feedlist = (id, name, mark, assignment, remarkstatus)
+				insert_db(sql2, feedlist)
+			else:
+				sql2 = """
+					UPDATE marks SET mark=? WHERE id=? AND assignment=?
+					"""
+				feedlist = (mark, id, assignment)
+				insert_db(sql2, feedlist)
 		return render_template('marksinstructor.html', viewmarks=viewmarks) #returns the tmeplate aswell as the marks that should be viewed
 
 @app.route('/AnonymousFeedback', methods=['GET', 'POST'])		
